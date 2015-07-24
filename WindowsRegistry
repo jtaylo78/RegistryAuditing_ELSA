@@ -1,29 +1,34 @@
-<ruleset name="REGISTRY" id='777'>
+<ruleset name="REGISTRY" id='10889'>
    <pattern>ossec_archive</pattern>
         <rules>
                 
 
                 <rule provider="SO-REGISTRY" class='10889' id='10889'>
                         <patterns>
-                                <pattern>@NUMBER::@@ESTRING::(@@ESTRING::)@ @IPv4::@->WinEvtLog @ESTRING:s0:WinEvtLog: Security: AUDIT_SUCCESS(4657):@</pattern>
+                                <!-- REGISTRY VALUE MODIFIED -->
+                                <pattern>@NUMBER::@@ESTRING::(@@ESTRING::)@ @IPv4::@->WinEvtLog @ESTRING::WinEvtLog: Security: AUDIT_SUCCESS(4657):@@ESTRING::: @@ESTRING::: @@ESTRING::: @@ESTRING:s0:: @@ESTRING::A registry value was modified. @@ESTRING::: @@ESTRING:: Account Name:  @@ESTRING:s1: @@ESTRING:: Object Name:  @@ESTRING:s2: @@ESTRING:: Object Value Name: @@ESTRING:s3: @@ESTRING:: Process Name:  @@ESTRING:s4: @@ESTRING:: @@ESTRING:: New Value:  @@ESTRING:s5:@</pattern>
                         </patterns>
 
                         <examples>
                                 <example>
-                                        <test_message program="ossec_archive"></test_message>
+                                        <test_message program="ossec_archive">2015 Jul 20 01:05:42 (windows7_x64) 192.168.142.6->WinEvtLog 2015 Jul 19 19:05:38 WinEvtLog: Security: AUDIT_SUCCESS(4657): Microsoft-Windows-Security-Auditing: (no user): no domain: WIN-KTL39CHEPFC: A registry value was modified. Subject:  Security ID:  S-1-5-21-2781697751-1881837122-3114415407-1000  Account Name:  james-test  Account Domain:  WIN-KTL39CHEPFC  Logon ID:  0x16cc3f  Object:  Object Name:  \REGISTRY\USER\S-1-5-21-2781697751-1881837122-3114415407-1000\Software\Microsoft\Windows\CurrentVersion\Run  Object Value Name: zBBEsSpFYX  Handle ID:  0x1b8  Operation Type:  %%1905  Process Information:  Process ID:  0xf1c  Process Name:  C:\Windows\regedit.exe  Change Information:  Old Value Type:  %%1873  Old Value:  C://Users//JAMES-~1//AppData//Local//Temp//rAIaBFGAxm.vbs  New Value Type:  %%1873  New Value:  C://Users//xxxxx-~1</test_message>
                                                 <!-- host-->
                                                 <test_value name="s0">WIN-KTL39CHEPFC</test_value>
-                                                <!-- sourceprocessguid-->
-                                                <test_value name="s1">F17228B0-CB16-556C-0000-0010A6A90000</test_value>
-                                                <!-- sourceimage-->
-                                                <test_value name="s2">C:\Windows\System32\csrss.exe</test_value>
-                                                <!-- targetProcessGuid-->
-                                                <test_value name="s4">F17228B0-CC30-556C-0000-0010B6510500</test_value>
-                                                <!-- targetimage-->
-                                                <test_value name="s5">C:\Windows\System32\cmd.exe</test_value>
+                                                <!-- user -->
+                                                <test_value name="s1">james-test</test_value>
+                                                <!-- regobjectname-->
+                                                <test_value name="s2">\REGISTRY\USER\S-1-5-21-2781697751-1881837122-3114415407-1000\Software\Microsoft\Windows\CurrentVersion\Run</test_value>
+                                                <!-- regobjectvaluename-->
+                                                <test_value name="s3">zBBEsSpFYX</test_value>
+                                                <!-- image -->
+                                                <test_value name="s4">C:\Windows\regedit.exe</test_value>
+                                                <!-- regobjectvalue-->
+                                                <test_value name="s5">C://Users//xxxxx-~1</test_value>
           
                                 </example>
                         </examples>
                 </rule>
+       </rules>
 </ruleset>
+
 
