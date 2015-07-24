@@ -1,3 +1,3 @@
 # Registry Auditing with ELSA
 
-Event 4657 ELSA parser
+Event 4657 ELSA parser Security Onion
