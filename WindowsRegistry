@@ -1,4 +1,4 @@
-<ruleset name="REGISTRY" id='10889'>
+<ruleset name="REGISTRY" id='889'>
    <pattern>ossec_archive</pattern>
         <rules>
                 
