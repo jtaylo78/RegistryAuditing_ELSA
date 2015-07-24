@@ -32,6 +32,38 @@
 </ruleset>
 
 
+ <pattern>ossec_archive</pattern>
+        <rules>
+                
+
+                <rule provider="SO-REGISTRY" class='10889' id='10889'>
+                        <patterns>
+                                <!-- REGISTRY VALUE MODIFIED -->
+                               <pattern>@NUMBER::@@ESTRING::(@@ESTRING::)@ @IPv4::@->WinEvtLog @ESTRING::WinEvtLog: Security: AUDIT_SUCCESS(4657):@@ESTRING::: @@ESTRING::: @@ESTRING::: @@ESTRING:s1::@@ESTRING::A registry value was modified. @@ESTRING::: @@ESTRING:: Account Name:  @@ESTRING:s0: @@ESTRING:: Object Name:  @@ESTRING:s2:  Object Value Name: @@ESTRING:s3:  Handle ID:@@ESTRING::  Process Name:  @@ESTRING:s4: @@ESTRING:: New Value:  @@ESTRING:s5:@</pattern>
+                        </patterns>
+
+                        <examples>
+                                 <example>
+                                        <test_message program="ossec_archive">2015 Jul 24 17:08:50 (windows10) 192.168.142.7->WinEvtLog 2015 Jul 24 12:24:08 WinEvtLog: Security: AUDIT_SUCCESS(4657): Microsoft-Windows-Security-Auditing: (no user): no domain: WIN-LEASINC264L: A registry value was modified. Subject:  Security ID:  S-1-5-21-1042747557-2358189341-3653334564-1000  Account Name:  james  Account Domain:  WIN-LEASINC264L  Logon ID:  0x48d90  Object:  Object Name:  \REGISTRY\USER\S-1-5-21-1042747557-2358189341-3653334564-1000\SOFTWARE\Microsoft\Windows\CurrentVersion\Run\My Test Key  Object Value Name: New Value #1  Handle ID:  0x200  Operation Type:  %%1904  Process Information:  Process ID:  0x13f8  Process Name:  C:\Windows\regedit.exe  Change Information:  Old Value Type:  -  Old Value:  -  New Value Type:  %%1873  New Value:  -</test_message>
+                                                <!-- user-->
+                                                <test_value name="s0">james</test_value>
+                                                <!-- host  -->
+                                                <test_value name="s1">WIN-LEASINC264L</test_value>
+                                                <!-- regobjectname-->
+                                                <test_value name="s2">\REGISTRY\USER\S-1-5-21-1042747557-2358189341-3653334564-1000\SOFTWARE\Microsoft\Windows\CurrentVersion\Run\My Test Key</test_value>
+                                                <!-- regobjectvaluename-->
+                                                <test_value name="s3">New Value #1</test_value>
+                                                <!-- image -->
+                                                <test_value name="s4">C:\Windows\regedit.exe</test_value>
+                                                <!-- regobjectvalue-->
+                                                <test_value name="s5">-</test_value>
+
+                                </example>
+
+                        </examples>
+                </rule>
+       </rules>
+</ruleset>
 
 
 
