@@ -1,0 +1,29 @@
+<ruleset name="REGISTRY" id='777'>
+   <pattern>ossec_archive</pattern>
+        <rules>
+                
+
+                <rule provider="SO-REGISTRY" class='10889' id='10889'>
+                        <patterns>
+                                <pattern>@NUMBER::@@ESTRING::(@@ESTRING::)@ @IPv4::@->WinEvtLog @ESTRING:s0:WinEvtLog: Security: AUDIT_SUCCESS(4657):@</pattern>
+                        </patterns>
+
+                        <examples>
+                                <example>
+                                        <test_message program="ossec_archive"></test_message>
+                                                <!-- host-->
+                                                <test_value name="s0">WIN-KTL39CHEPFC</test_value>
+                                                <!-- sourceprocessguid-->
+                                                <test_value name="s1">F17228B0-CB16-556C-0000-0010A6A90000</test_value>
+                                                <!-- sourceimage-->
+                                                <test_value name="s2">C:\Windows\System32\csrss.exe</test_value>
+                                                <!-- targetProcessGuid-->
+                                                <test_value name="s4">F17228B0-CC30-556C-0000-0010B6510500</test_value>
+                                                <!-- targetimage-->
+                                                <test_value name="s5">C:\Windows\System32\cmd.exe</test_value>
+          
+                                </example>
+                        </examples>
+                </rule>
+</ruleset>
+
